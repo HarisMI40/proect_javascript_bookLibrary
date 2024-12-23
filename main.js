@@ -6,6 +6,9 @@ const inputPenulis = document.getElementById("bookFormAuthor");
 const inputTahun = document.getElementById("bookFormYear");
 const inputSelesai = document.getElementById("bookFormIsComplete");
 const tombolSubmit = document.getElementById("bookFormSubmit");
+const formTambahBuku = document.getElementById("bookForm");
+
+
 const tombolCari = document.getElementById("searchSubmit");
 const inputCari = document.getElementById("searchBookTitle");
 const bukuBelumSelesai = document.getElementById("incompleteBookList");
@@ -13,6 +16,16 @@ const bukuSelesai = document.getElementById("completeBookList");
 const STORAGE_KEY = "buku";
 const RENDER_EVENT = "render-book";
 const dataBuku = [];
+
+//* MODAL BOX
+const overlay = document.getElementById("overlay");
+const inputEditJudul = document.getElementById("editBookFormTitle");
+const inputEditPenulis = document.getElementById("editBookFormAuthor");
+const inputEditTahun = document.getElementById("editBookFormYear");
+const tombolEditSubmit = document.getElementById("editBookFormSubmit");
+const cancelBookFormSubmit = document.getElementById("cancelBookFormSubmit");
+const formEdit = document.getElementById("editBookForm");
+let idBukuEdit = "";
 
 document.addEventListener("DOMContentLoaded", () => {
   if(isStorageExist()){
@@ -130,7 +143,7 @@ function buatBukuCard (buku) {
     tahun.setAttribute("data-testid", "bookItemEditButton");
     buttonEdit.textContent = "Edit Buku";
     buttonEdit.addEventListener("click", function () {
-      alert("Edit")
+      showModal(buku);
     }); 
 
   buttonContainer.append(buttonSelesai, buttonHapus, buttonEdit);
@@ -140,8 +153,42 @@ function buatBukuCard (buku) {
   return cardContainer;
 }
 
-tombolSubmit.addEventListener("click", tambahBuku);
+formTambahBuku.addEventListener("submit", tambahBuku);
 tombolCari.addEventListener("click", cariBuku);
+
+formEdit.addEventListener("submit", editBuku)
+cancelBookFormSubmit.addEventListener("click", cancelModal);
+
+function showModal(buku){
+  overlay.style.display = "flex";
+  inputEditJudul.value = buku.judul;
+  inputEditPenulis.value = buku.penulis;
+  inputEditTahun.value = buku.tahun;
+
+  idBukuEdit = buku.id;
+}
+
+function cancelModal(){
+  overlay.style.display = "none";
+  inputEditJudul.value = "";
+  inputEditPenulis.value = "";
+  inputEditTahun.value = "";
+}
+
+function editBuku(e){
+  e.preventDefault();
+  
+  const bukuIndex = dataBuku.findIndex((buku) => buku.id === idBukuEdit);
+
+  dataBuku[bukuIndex].judul = inputEditJudul.value;
+  dataBuku[bukuIndex].penulis = inputEditPenulis.value;
+  dataBuku[bukuIndex].tahun = inputEditTahun.value;
+
+  saveData(dataBuku);
+  document.dispatchEvent(new Event(RENDER_EVENT));
+  cancelModal();
+}
+
 
 function cariBuku(e){
   e.preventDefault();

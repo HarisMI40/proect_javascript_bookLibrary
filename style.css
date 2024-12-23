@@ -27,19 +27,19 @@ section h2{
   margin-bottom: 20px;
 }
 
-.container-tambahbuku form div{
+.container-tambahbuku form div, .modal-content form div{
   display: flex;
   flex-direction: column;
   margin-bottom: 10px;
   gap : 5px
 }
 
-.container-tambahbuku form div label{
+.container-tambahbuku form div label, .modal-content form div label{
   color : rgb(51, 184, 233);
   font-weight: bolder;
 }
 
-section form input{
+section form input, .modal-content form div input{
   height: 30px;
 }
 

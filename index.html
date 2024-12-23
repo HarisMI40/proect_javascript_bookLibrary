@@ -8,6 +8,7 @@
     <!-- Impor script kamu di sini -->
     <!-- Lampirkan `defer` jika pemanggilan dilakukan dalam <head> -->
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="modal.css">
     <script defer src="main.js"></script>
   </head>
   <body>
@@ -71,6 +72,40 @@
 
         </div>
       </section>
+
+      <div id="overlay" class="overlay">
+        <section id="modal" class="modal">
+          <div class="modal-content">
+            <h2>Edit Buku </h2>
+            <form id="editBookForm">
+              <div>
+                <label for="bookFormTitle">Judul</label>
+                <input id="editBookFormTitle" type="text" required />
+              </div>
+              <div>
+                <label for="bookFormAuthor">Penulis</label>
+                <input id="editBookFormAuthor" type="text" required />
+              </div>
+              <div>
+                <label for="bookFormYear">Tahun</label>
+                <input id="editBookFormYear" type="number" required/>
+              </div>
+
+
+              <div class="container-button">
+                <button id="editBookFormSubmit" type="submit" class="editBookFormSubmit">
+                  Edit
+                </button>
+                <button id="cancelBookFormSubmit" type="button" class="cancelBookFormSubmit">
+                  Cancel
+                </button>
+              </div>
+            </form>
+        </section>
+      </div>
     </main>
+
+
+    
   </body>
 </html>
