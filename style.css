@@ -101,15 +101,3 @@ section form input, .modal-content form div input{
   font-weight: bold;
   margin : 0 5px;
 }
-
-.card button:nth-child(1){
-  background-color: green;
-}
-
-.card button:nth-child(2){
-  background-color: red;
-}
-
-.card button:nth-child(3){
-  background-color: orange;
-}

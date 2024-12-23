@@ -121,19 +121,26 @@ function buatBukuCard (buku) {
   tahun.setAttribute("data-testid", "bookItemYear");
   tahun.textContent = `Tahun: ${buku.tahun}`;
 
-
   const buttonContainer = document.createElement("div");
+
+
+  if(buku.selesai == false){
     const buttonSelesai = document.createElement("button");
     tahun.setAttribute("data-testid", "bookItemIsCompleteButton");
     buttonSelesai.textContent = "Selesai dibaca";
+    buttonSelesai.style.background = "green";
     buttonSelesai.addEventListener("click", function () {
       updateBukuKeSelesai(buku.id);
     }); 
+
+    buttonContainer.append(buttonSelesai);
+}
 
 
     const buttonHapus = document.createElement("button");
     tahun.setAttribute("data-testid", "bookItemDeleteButton");
     buttonHapus.textContent = "Hapus Buku";
+    buttonHapus.style.background = "red";
     buttonHapus.addEventListener("click", function () {
       hapusBuku(buku.id);
     }); 
@@ -142,11 +149,12 @@ function buatBukuCard (buku) {
     const buttonEdit = document.createElement("button");
     tahun.setAttribute("data-testid", "bookItemEditButton");
     buttonEdit.textContent = "Edit Buku";
+    buttonEdit.style.background = "orange";
     buttonEdit.addEventListener("click", function () {
       showModal(buku);
     }); 
 
-  buttonContainer.append(buttonSelesai, buttonHapus, buttonEdit);
+  buttonContainer.append(buttonHapus, buttonEdit);
 
   cardContainer.append(judul, penulis, tahun, buttonContainer);
 
@@ -177,7 +185,7 @@ function cancelModal(){
 
 function editBuku(e){
   e.preventDefault();
-  
+
   const bukuIndex = dataBuku.findIndex((buku) => buku.id === idBukuEdit);
 
   dataBuku[bukuIndex].judul = inputEditJudul.value;
