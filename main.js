@@ -126,7 +126,7 @@ function buatBukuCard (buku) {
 
   if(buku.selesai == false){
     const buttonSelesai = document.createElement("button");
-    tahun.setAttribute("data-testid", "bookItemIsCompleteButton");
+    buttonSelesai.setAttribute("data-testid", "bookItemIsCompleteButton");
     buttonSelesai.textContent = "Selesai dibaca";
     buttonSelesai.style.background = "green";
     buttonSelesai.addEventListener("click", function () {
@@ -138,7 +138,7 @@ function buatBukuCard (buku) {
 
 
     const buttonHapus = document.createElement("button");
-    tahun.setAttribute("data-testid", "bookItemDeleteButton");
+    buttonHapus.setAttribute("data-testid", "bookItemDeleteButton");
     buttonHapus.textContent = "Hapus Buku";
     buttonHapus.style.background = "red";
     buttonHapus.addEventListener("click", function () {
@@ -147,7 +147,7 @@ function buatBukuCard (buku) {
 
 
     const buttonEdit = document.createElement("button");
-    tahun.setAttribute("data-testid", "bookItemEditButton");
+    buttonEdit.setAttribute("data-testid", "bookItemEditButton");
     buttonEdit.textContent = "Edit Buku";
     buttonEdit.style.background = "orange";
     buttonEdit.addEventListener("click", function () {
