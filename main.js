@@ -20,7 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 })
 
-
 function loadDataFromStorage() {
   const dataBukuTersimpan = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
   if(dataBukuTersimpan !== null){
@@ -78,7 +77,6 @@ function hapusBuku(id){
   document.dispatchEvent(new Event(RENDER_EVENT))
 }
 
-
 function updateBukuKeSelesai(id){
   const bukuIndex = dataBuku.findIndex((buku) => buku.id === id);
 
@@ -91,7 +89,6 @@ function updateBukuKeSelesai(id){
 function saveData(buku){
   localStorage.setItem(STORAGE_KEY, JSON.stringify(buku));
 }
-
 
 function buatBukuCard (buku) {
   const cardContainer = document.createElement("div");
