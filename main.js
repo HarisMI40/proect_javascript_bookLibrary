@@ -12,7 +12,6 @@ const bukuBelumSelesai = document.getElementById("incompleteBookList");
 const bukuSelesai = document.getElementById("completeBookList");
 const STORAGE_KEY = "buku";
 const RENDER_EVENT = "render-book";
-// const dataBukuTersimpan = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
 const dataBuku = [];
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -134,7 +133,6 @@ function buatBukuCard (buku) {
     tahun.setAttribute("data-testid", "bookItemEditButton");
     buttonEdit.textContent = "Edit Buku";
     buttonEdit.addEventListener("click", function () {
-      // hapusBuku(buku.id);
       alert("Edit")
     }); 
 
@@ -143,18 +141,6 @@ function buatBukuCard (buku) {
   cardContainer.append(judul, penulis, tahun, buttonContainer);
 
   return cardContainer;
-
-  // return `
-  // <div class="card" data-bookid=${buku.id} data-testid="bookItem">
-  //   <h3>${buku.judul}</h3>
-  //   <p>${buku.penulis}</p>
-  //   <p>${buku.tahun}</p>
-  //   <div>
-  //     <button class="selesai">Selesai dibaca</button>
-  //     <button class="hapus" onclick="hapusBuku(${buku.id})">Hapus buku</button>
-  //     <button class="Edit">Edit buku</button>
-  //   </div>
-  // </div>`
 }
 
 tombolSubmit.addEventListener("click", tambahBuku);
@@ -194,7 +180,6 @@ function isStorageExist() {
 
 function main(){
     if(dataBuku.length > 0){
-      // let bukuCreated = [];
       bukuSelesai.innerHTML ="";
       bukuBelumSelesai.innerHTML ="";
       
@@ -204,10 +189,7 @@ function main(){
         }else{
           bukuBelumSelesai.append(buatBukuCard(buku));
         }
-        // bukuCreated.push(buku);
       }
-      // dataBuku.splice(0,dataBuku.length)
-      // dataBuku.push(bukuCreated);
     }
 }
 
